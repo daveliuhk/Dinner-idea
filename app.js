@@ -120,7 +120,10 @@
       const r = recipeById(state.week[idx]);
       return `
         <article class="day-card">
-          <div class="day-label">${day}</div>
+          <div class="day-card-top">
+            <div class="day-label">${day}</div>
+            ${r ? `<button class="button secondary small day-remove" data-day="${idx}" type="button">Remove</button>` : ``}
+          </div>
           <select class="input day-select" data-day="${idx}">${recipeOptionHtml(state.week[idx])}</select>
           ${r ? `
             <div class="recipe-mini">
@@ -135,6 +138,15 @@
       state.week[Number(e.target.dataset.day)] = e.target.value || null;
       saveState();
       renderPlanner();
+    }));
+
+    $$(".day-remove", grid).forEach(btn => btn.addEventListener("click", e => {
+      const day = Number(e.currentTarget.dataset.day);
+      const removed = recipeById(state.week[day]);
+      state.week[day] = null;
+      saveState();
+      renderPlanner();
+      toast(removed ? `Removed ${removed.name} from ${DAYS[day]}` : `Cleared ${DAYS[day]}`);
     }));
 
     const {blockUse, ingredientUse} = aggregateSelected();
@@ -325,12 +337,21 @@
 
   function addRecipeToWeek(id) {
     const empty = state.week.findIndex(x => !x);
-    if (empty === -1) { toast("The five-day week is already full"); return; }
+    if (empty === -1) { toast("Week is full — remove a meal first, then add this recipe"); return; }
     state.week[empty] = id;
     saveState();
     toast(`Added to ${DAYS[empty]}`);
     renderPlanner();
   }
+
+  $("#clearWeekBtn").addEventListener("click", () => {
+    if (!state.week.some(Boolean)) { toast("The week is already empty"); return; }
+    if (!confirm("Remove all five dinners from this week?")) return;
+    state.week = [null, null, null, null, null];
+    saveState();
+    renderPlanner();
+    toast("Week cleared");
+  });
 
   $("#suggestWeekBtn").addEventListener("click", () => {
     const picks = greedySuggestedWeek();

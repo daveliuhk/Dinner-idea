@@ -115,7 +115,8 @@ main { max-width: 1500px; margin: 0 auto; padding: 28px; }
   margin-bottom: 18px;
 }
 .day-card { background: white; border: 1px solid var(--line); border-radius: 15px; padding: 14px; min-width: 0; }
-.day-label { font-weight: 850; color: var(--brand); margin-bottom: 8px; }
+.day-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.day-label { font-weight: 850; color: var(--brand); }
 .day-card select { width: 100%; }
 .recipe-mini { padding-top: 12px; display: grid; gap: 7px; }
 .recipe-mini .meta { display: flex; gap: 6px; flex-wrap: wrap; }
