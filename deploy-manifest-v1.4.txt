@@ -1,0 +1,6 @@
+Dinner LEGO v1.4 deployment manifest
+Data: 175 recipes, 43 shared blocks, 68 ingredients
+Nutrition: kcal/protein/carbohydrate/fat per adult-equivalent serving
+Portion basis: 2.75-3 adult-equivalent portions
+Timing: 174 recipes <=15 min; 1 recipe 18 min
+UI: event-driven v1.4, no MutationObserver loop
