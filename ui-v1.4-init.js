@@ -1,0 +1,12 @@
+(function(){
+"use strict";
+const U=window.DinnerV14UI,$=U.$,$$=U.$$,esc=U.esc;
+U.renderSauces=()=>{const root=$("#sauceList");if(!root)return;U.dataCache=U.readData();const q=($("#sauceSearch")?.value||"").toLowerCase(),ss=(window.DINNER_CATALOG?.sauces||[]).filter(s=>!q||[s.code,s.name,...(s.ingredients||[])].join(" ").toLowerCase().includes(q));root.innerHTML=ss.map(s=>{const uses=U.data().recipes.filter(r=>+(r.blocks?.[s.code]||0)>0).sort((a,b)=>a.name.localeCompare(b.name));return `<article class="sauce-card card"><div class="sauce-card-head"><div><div class="eyebrow">${esc(s.code)}</div><h3>${esc(s.name)}</h3></div><span class="chip">${uses.length} recipes</span></div><div class="sauce-yield">${esc(s.yield)}</div><div class="sauce-columns"><div><h4>Batch ingredients</h4><ul>${(s.ingredients||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h4>Sunday method</h4><ol>${(s.steps||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div></div><div class="sauce-storage"><strong>Storage/use:</strong> ${esc(s.storage)}</div><details class="sauce-uses"><summary>Recipes using ${esc(s.code)}</summary><div class="use-chips">${uses.map(r=>`<button class="chip sauce-recipe-link" data-id="${esc(r.id)}" type="button">${esc(r.name)}</button>`).join("")||'<span class="muted">No recipes currently use this sauce.</span>'}</div></details></article>`}).join("")||'<div class="empty">No sauces match.</div>';U.dataCache=null};
+$("#stockTypeFilter")?.addEventListener("change",e=>{e.stopImmediatePropagation();U.stockCategory=e.target.value;U.applyStockFilter()},true);
+$("#stockSearch")?.addEventListener("input",e=>{e.stopImmediatePropagation();U.stockQuery=(e.target.value||"").toLowerCase();U.applyStockFilter()},true);
+$("#sauceSearch")?.addEventListener("input",U.renderSauces);
+document.addEventListener("click",e=>{if(e.target.closest('[data-tab="sauces"]')){setTimeout(U.renderSauces,0);return}const link=e.target.closest(".sauce-recipe-link");if(link){const r=U.recipeById(link.dataset.id);document.querySelector('[data-tab="recipes"]')?.click();const s=$("#recipeSearch");if(s&&r){s.value=r.name;s.dispatchEvent(new Event("input",{bubbles:true}))}return}U.schedule()});
+document.addEventListener("change",e=>{if(e.target.id!=="stockTypeFilter")U.schedule()});
+document.addEventListener("input",e=>{if(e.target.id!=="stockSearch"&&e.target.id!=="sauceSearch")U.schedule()});
+U.renderSauces();U.enhanceAll();
+})();

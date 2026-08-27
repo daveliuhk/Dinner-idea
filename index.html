@@ -39,23 +39,14 @@
         </div>
         <div class="button-row"><button class="button secondary" id="clearWeekBtn">Clear week</button><button class="button" id="suggestWeekBtn">Suggest 5-meal week</button></div>
       </div>
-
       <div id="weekGrid" class="week-grid"></div>
-
       <div class="two-col">
         <article class="card">
-          <div class="card-heading">
-            <h3>Sunday prep</h3>
-            <span class="muted">Reusable blocks only</span>
-          </div>
+          <div class="card-heading"><h3>Sunday prep</h3><span class="muted">Shared blocks only</span></div>
           <div id="prepSummary"></div>
         </article>
-
         <article class="card">
-          <div class="card-heading">
-            <h3>Pack utilisation</h3>
-            <span class="muted">Against “What I bought”</span>
-          </div>
+          <div class="card-heading"><h3>Pack utilisation</h3><span class="muted">Against “What I bought”</span></div>
           <div id="weekStockSummary"></div>
         </article>
       </div>
@@ -65,14 +56,13 @@
       <div class="section-heading">
         <div>
           <h2>What I bought</h2>
-          <p>Enter actual quantities. Use the category dropdown to jump quickly to meat, fish, carbs, vegetables, sauces and other groups.</p>
+          <p>Enter actual quantities. Ingredients now distinguish useful cuts and forms such as chicken breast, thigh, drumsticks, steak, mince and different fish.</p>
         </div>
         <div class="button-row">
           <button class="button secondary" id="loadTypicalPacksBtn">Load typical packs</button>
           <button class="button secondary" id="clearStockBtn">Clear</button>
         </div>
       </div>
-
       <div class="two-col stock-layout">
         <article class="card">
           <div class="filter-row">
@@ -81,12 +71,8 @@
           </div>
           <div id="stockInputs" class="stock-inputs"></div>
         </article>
-
         <article class="card">
-          <div class="card-heading">
-            <h3>Best recipe matches</h3>
-            <span class="muted">Uses entered stock without overshooting</span>
-          </div>
+          <div class="card-heading"><h3>Best recipe matches</h3><span class="muted">Uses entered stock without overshooting</span></div>
           <div id="recipeMatches"></div>
         </article>
       </div>
@@ -96,7 +82,7 @@
       <div class="section-heading">
         <div>
           <h2>Recipes</h2>
-          <p>Search, edit, delete, or add your own recipes. Nutrition is an estimate per adult-equivalent serving (family total ÷ 2.75).</p>
+          <p>175 workflow-audited dinners. Nutrition is estimated per adult-equivalent serving; family quantities are sized for about 2.75–3 adults.</p>
         </div>
         <button class="button" id="addRecipeBtn">Add recipe</button>
       </div>
@@ -111,7 +97,7 @@
       <div class="section-heading">
         <div>
           <h2>Prep blocks</h2>
-          <p>Reusable Sunday-prep components such as sauce cubes, aromatics and chopped vegetables.</p>
+          <p>43 documented shared components. Every starter block is used by at least five retained recipes.</p>
         </div>
         <button class="button" id="addBlockBtn">Add block</button>
       </div>
@@ -122,7 +108,7 @@
       <div class="section-heading">
         <div>
           <h2>Sauce library</h2>
-          <p>Batch recipes and step-by-step methods for every sauce block. The sauce blocks also remain in Prep blocks for weekly planning.</p>
+          <p>Batch ingredients, Sunday method and storage guidance for the shared sauce/base blocks.</p>
         </div>
       </div>
       <div class="filter-row single-filter"><input id="sauceSearch" class="input" placeholder="Search sauces or ingredients…" /></div>
@@ -133,7 +119,7 @@
       <div class="section-heading">
         <div>
           <h2>Ingredients</h2>
-          <p>Purchasable items used by the reverse planner. Add an ingredient before using it in a new recipe.</p>
+          <p>Purchasable ingredients used by the reverse planner, including distinct protein cuts and practical supermarket categories.</p>
         </div>
         <button class="button" id="addIngredientBtn">Add ingredient</button>
       </div>
@@ -148,28 +134,13 @@
         </div>
       </div>
       <div class="data-actions">
-        <article class="card action-card">
-          <h3>Export everything</h3>
-          <p>Recipes, ingredients, prep blocks, stock levels and your current week.</p>
-          <button class="button" id="exportBtn">Download JSON backup</button>
-        </article>
-        <article class="card action-card">
-          <h3>Import backup</h3>
-          <p>Restore a JSON file exported by this app.</p>
-          <label class="button secondary file-button">
-            Choose JSON
-            <input id="importFile" type="file" accept=".json,application/json" hidden />
-          </label>
-        </article>
-        <article class="card action-card danger-zone">
-          <h3>Reset to original data</h3>
-          <p>Deletes browser edits and restores the current starter recipe set.</p>
-          <button class="button danger" id="resetBtn">Reset app</button>
-        </article>
+        <article class="card action-card"><h3>Export everything</h3><p>Recipes, ingredients, prep blocks, stock levels and your current week.</p><button class="button" id="exportBtn">Download JSON backup</button></article>
+        <article class="card action-card"><h3>Import backup</h3><p>Restore a JSON file exported by this app.</p><label class="button secondary file-button">Choose JSON<input id="importFile" type="file" accept=".json,application/json" hidden /></label></article>
+        <article class="card action-card danger-zone"><h3>Reset to original data</h3><p>Deletes browser edits and restores the current starter recipe set.</p><button class="button danger" id="resetBtn">Reset app</button></article>
       </div>
       <article class="card note-card">
         <h3>About syncing</h3>
-        <p>This first version is intentionally backend-free, so GitHub Pages can host it for free. Browser data does not automatically sync between phones/computers. Export/import JSON is the portable backup. A later version can add account-based cloud sync without changing the recipe model.</p>
+        <p>This version is intentionally backend-free, so GitHub Pages can host it for free. Browser data does not automatically sync between phones/computers. Export/import JSON is the portable backup.</p>
       </article>
     </section>
   </main>
@@ -177,10 +148,7 @@
   <dialog id="editorDialog" class="dialog">
     <form method="dialog" id="editorForm">
       <div class="dialog-header">
-        <div>
-          <div class="eyebrow" id="dialogEyebrow">Edit</div>
-          <h2 id="dialogTitle">Item</h2>
-        </div>
+        <div><div class="eyebrow" id="dialogEyebrow">Edit</div><h2 id="dialogTitle">Item</h2></div>
         <button value="cancel" class="icon-button" aria-label="Close">×</button>
       </div>
       <div id="editorBody"></div>
@@ -193,15 +161,34 @@
 
   <div id="toast" class="toast" role="status"></div>
 
-  <script src="data.js"></script>
-  <script src="expansion-core-v1.2.js"></script>
-  <script src="expansion-v1.2-1.js"></script>
-  <script src="expansion-v1.2-2.js"></script>
-  <script src="expansion-v1.2-3.js"></script>
-  <script src="expansion-v1.2-4.js"></script>
-  <script src="catalog-v1.3.js"></script>
-  <script src="migration-v1.3.js"></script>
-  <script src="app.js"></script>
-  <script src="ui-v1.3.1.js"></script>
+  <script src="data-v1.4-base.js?v=144"></script>
+  <script src="data-v1.4-blocks-1.js?v=144"></script>
+  <script src="data-v1.4-blocks-2.js?v=144"></script>
+  <script src="data-v1.4-blocks-3.js?v=144"></script>
+  <script src="data-v1.4-ingredients.js?v=144"></script>
+  <script src="data-v1.4-recipes-001-010.js?v=144"></script>
+  <script src="data-v1.4-recipes-011-020.js?v=144"></script>
+  <script src="data-v1.4-recipes-021-030.js?v=144"></script>
+  <script src="data-v1.4-recipes-031-042.js?v=144"></script>
+  <script src="data-v1.4-recipes-043-053.js?v=144"></script>
+  <script src="data-v1.4-recipes-054-064.js?v=144"></script>
+  <script src="data-v1.4-recipes-065-074.js?v=144"></script>
+  <script src="data-v1.4-recipes-075-086.js?v=144"></script>
+  <script src="data-v1.4-recipes-087-096.js?v=144"></script>
+  <script src="data-v1.4-recipes-097-106.js?v=144"></script>
+  <script src="data-v1.4-recipes-107-117.js?v=144"></script>
+  <script src="data-v1.4-recipes-118-127.js?v=144"></script>
+  <script src="data-v1.4-recipes-128-137.js?v=144"></script>
+  <script src="data-v1.4-recipes-138-152.js?v=144"></script>
+  <script src="data-v1.4-recipes-153-162.js?v=144"></script>
+  <script src="data-v1.4-recipes-163-172.js?v=144"></script>
+  <script src="data-v1.4-recipes-173-182.js?v=144"></script>
+  <script src="data-v1.4-recipes-183-186.js?v=144"></script>
+  <script src="catalog-v1.4-core.js?v=144"></script>
+  <script src="catalog-v1.4-sauces.js?v=144"></script>
+  <script src="migration-v1.4.js?v=144"></script>
+  <script src="app.js?v=144"></script>
+  <script src="ui-v1.4-core.js?v=144"></script>
+  <script src="ui-v1.4-init.js?v=144"></script>
 </body>
 </html>
