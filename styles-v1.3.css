@@ -1,0 +1,27 @@
+/* v1.3 categorisation, nutrition and sauce guide */
+.category-section { margin: 0 0 30px; }
+.group-heading-row { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:0 0 12px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+.group-heading { margin:0; font-size:1.15rem; letter-spacing:-.015em; color:var(--ink); }
+.group-heading.compact { font-size:.86rem; text-transform:uppercase; letter-spacing:.08em; color:var(--brand); margin:14px 0 4px; }
+.group-count { color:var(--muted); font-size:.82rem; white-space:nowrap; }
+.stock-category-group:first-child .group-heading.compact { margin-top:0; }
+.nutrition-row { display:flex; gap:7px; flex-wrap:wrap; align-items:center; color:var(--muted); font-size:.78rem; }
+.nutrition-row span { background:#f6f8f7; border:1px solid var(--line); border-radius:999px; padding:3px 7px; }
+.nutrition-row .nutrition-kcal { color:var(--brand); font-weight:850; background:var(--soft); }
+.single-filter { grid-template-columns:minmax(220px,520px); }
+.sauce-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.sauce-card { display:grid; gap:13px; }
+.sauce-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; }
+.sauce-card-head h3 { margin:3px 0 0; font-size:1.18rem; }
+.sauce-yield { color:var(--brand); font-weight:800; }
+.sauce-columns { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.sauce-columns h4 { margin:0 0 7px; }
+.sauce-columns ul, .sauce-columns ol { margin:0; padding-left:20px; color:var(--muted); line-height:1.45; }
+.sauce-columns li { margin-bottom:5px; }
+.sauce-storage { background:var(--soft); border-radius:10px; padding:10px 12px; line-height:1.45; }
+.sauce-uses summary { cursor:pointer; font-weight:800; color:var(--brand); }
+.use-chips { display:flex; gap:7px; flex-wrap:wrap; margin-top:10px; }
+button.chip { border:0; cursor:pointer; color:var(--ink); }
+button.chip:hover { background:#dce9e4; }
+@media (max-width: 950px) { .sauce-grid { grid-template-columns:1fr; } }
+@media (max-width: 620px) { .sauce-columns { grid-template-columns:1fr; } .group-heading-row { align-items:flex-start; } }
