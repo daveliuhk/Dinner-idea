@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#1f3a36" />
   <title>Dinner LEGO Planner</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-v1.3.css" />
 </head>
 <body>
   <header class="app-header">
@@ -24,6 +25,7 @@
     <button data-tab="stock" class="tab">What I bought</button>
     <button data-tab="recipes" class="tab">Recipes</button>
     <button data-tab="blocks" class="tab">Prep blocks</button>
+    <button data-tab="sauces" class="tab">Sauces</button>
     <button data-tab="ingredients" class="tab">Ingredients</button>
     <button data-tab="data" class="tab">Data</button>
   </nav>
@@ -63,7 +65,7 @@
       <div class="section-heading">
         <div>
           <h2>What I bought</h2>
-          <p>Enter actual quantities. Leave things you do not want to optimise around at zero.</p>
+          <p>Enter actual quantities. Use the category dropdown to jump quickly to meat, fish, carbs, vegetables, sauces and other groups.</p>
         </div>
         <div class="button-row">
           <button class="button secondary" id="loadTypicalPacksBtn">Load typical packs</button>
@@ -94,7 +96,7 @@
       <div class="section-heading">
         <div>
           <h2>Recipes</h2>
-          <p>Search, edit, delete, or add your own recipes.</p>
+          <p>Search, edit, delete, or add your own recipes. Nutrition is an estimate per adult-equivalent serving (family total ÷ 2.75).</p>
         </div>
         <button class="button" id="addRecipeBtn">Add recipe</button>
       </div>
@@ -102,7 +104,7 @@
         <input id="recipeSearch" class="input" placeholder="Search recipes…" />
         <select id="recipeCategoryFilter" class="input"></select>
       </div>
-      <div id="recipeList" class="recipe-grid"></div>
+      <div id="recipeList"></div>
     </section>
 
     <section id="blocks" class="panel">
@@ -114,6 +116,17 @@
         <button class="button" id="addBlockBtn">Add block</button>
       </div>
       <div id="blockList"></div>
+    </section>
+
+    <section id="sauces" class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>Sauce library</h2>
+          <p>Batch recipes and step-by-step methods for every sauce block. The sauce blocks also remain in Prep blocks for weekly planning.</p>
+        </div>
+      </div>
+      <div class="filter-row single-filter"><input id="sauceSearch" class="input" placeholder="Search sauces or ingredients…" /></div>
+      <div id="sauceList" class="sauce-grid"></div>
     </section>
 
     <section id="ingredients" class="panel">
@@ -150,7 +163,7 @@
         </article>
         <article class="card action-card danger-zone">
           <h3>Reset to original data</h3>
-          <p>Deletes browser edits and restores the 98-recipe starter set.</p>
+          <p>Deletes browser edits and restores the current starter recipe set.</p>
           <button class="button danger" id="resetBtn">Reset app</button>
         </article>
       </div>
@@ -186,6 +199,9 @@
   <script src="expansion-v1.2-2.js"></script>
   <script src="expansion-v1.2-3.js"></script>
   <script src="expansion-v1.2-4.js"></script>
+  <script src="catalog-v1.3.js"></script>
+  <script src="migration-v1.3.js"></script>
   <script src="app.js"></script>
+  <script src="ui-v1.3.js"></script>
 </body>
 </html>
