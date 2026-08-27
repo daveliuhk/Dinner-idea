@@ -16,10 +16,15 @@
       const raw=localStorage.getItem(KEY);
       if(raw){
         const saved=JSON.parse(raw);
-        if(Number(saved.schemaVersion||1)<2){
+        const first=(chunk.blocks&&chunk.blocks[0]&&chunk.blocks[0].code)||(chunk.recipes&&chunk.recipes[0]&&chunk.recipes[0].id)||"chunk";
+        const last=(chunk.blocks&&chunk.blocks[chunk.blocks.length-1]&&chunk.blocks[chunk.blocks.length-1].code)||(chunk.recipes&&chunk.recipes[chunk.recipes.length-1]&&chunk.recipes[chunk.recipes.length-1].id)||"chunk";
+        const marker=`v1.2-${first}-${last}`;
+        saved.migrations=saved.migrations||{};
+        if(!saved.migrations[marker]){
           merge(saved);
           saved.stock=saved.stock||{};
           saved.ingredients.forEach(i=>{if(saved.stock[i.code]==null)saved.stock[i.code]=0});
+          saved.migrations[marker]=true;
           localStorage.setItem(KEY,JSON.stringify(saved));
         }
       }
