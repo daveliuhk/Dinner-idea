@@ -1,0 +1,19 @@
+.v141-block-guide {
+  margin: .55rem 0;
+  padding: .55rem .65rem;
+  border: 1px solid rgba(31,81,73,.14);
+  border-radius: 10px;
+  background: #f5f8f7;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+.v141-block-guide > strong { display:block; margin-bottom:.32rem; }
+.v141-block-item { display:block; margin-top:.22rem; }
+.v141-block-item b { letter-spacing:.02em; }
+.v141-no-block { color:#687772; }
+.v141-prep-recipes { min-width: 190px; }
+.v141-prep-recipes > div + div { margin-top:.28rem; }
+@media (max-width: 720px) {
+  .v141-prep-recipes { min-width: 150px; }
+  .v141-block-guide { font-size:.84rem; }
+}
