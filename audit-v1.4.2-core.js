@@ -1,0 +1,22 @@
+(function(){
+  "use strict";
+  const d=window.DEFAULT_DINNER_DATA, cat=window.DINNER_CATALOG;
+  if(!d||!cat) throw new Error("v1.4.2 audit requires v1.4 data");
+  const byId=new Map(d.recipes.map(r=>[r.id,r]));
+  const byBlock=new Map(d.blocks.map(b=>[b.code,b]));
+  const patch=(id,p)=>Object.assign(byId.get(id)||{},p);
+  const setIng=(id,obj)=>{const r=byId.get(id); if(r) r.ingredients=Object.assign({},obj)};
+  const addBlock=(id,code,qty=1)=>{const r=byId.get(id); if(r){r.blocks=r.blocks||{};r.blocks[code]=qty}};
+  const delBlock=(id,code)=>{const r=byId.get(id); if(r?.blocks) delete r.blocks[code]};
+  const corePantry="oil, salt, pepper, soy sauce, vinegar, honey, mustard, stock cubes, flour/panko and basic dried herbs/spices";
+  const beforeIngredients=new Map(d.recipes.map(r=>[r.id,Object.assign({},r.ingredients||{})]));
+  window.DinnerV142={d,cat,byId,byBlock,patch,setIng,addBlock,delBlock,corePantry,beforeIngredients};
+  const mergeCodes={S11:"S03",S15:"S08",S13:"S16"};
+  d.recipes.forEach(r=>{Object.entries(mergeCodes).forEach(([from,to])=>{if(Number(r.blocks?.[from]||0)>0){r.blocks[to]=(r.blocks[to]||0)+r.blocks[from];delete r.blocks[from];}r.method=String(r.method||"").replaceAll(from,to);r.requirement=String(r.requirement||"").replaceAll(from,to);});});
+  d.blocks=d.blocks.filter(b=>!Object.keys(mergeCodes).includes(b.code));
+  const bmap=new Map(d.blocks.map(b=>[b.code,b]));
+  Object.assign(bmap.get("S03"),{name:"Master mild curry sauce/base",unitMeans:"150g",prep:"Cook onion, carrot and ginger-garlic with mild curry powder and stock; blend smooth. Use as-is for katsu/Japanese-style curry, or add coconut milk/yoghurt for Indian-style curries.",batchIngredients:"A01 onion base; carrots; A02 ginger-garlic; mild curry powder; stock",batchYield:"8 portions",sundayActiveMin:18,elapsedMin:35,cadence:"Monthly",storage:"Freeze 150g portions. Use as-is for katsu/Japanese-style curry; loosen with coconut milk/yoghurt for other curries."});
+  Object.assign(bmap.get("S08"),{name:"Onion-mushroom umami gravy base",unitMeans:"150g",prep:"Brown onion and mushrooms deeply, add stock and reduce. Blend partly or fully. Add crème fraîche for stroganoff/cream sauce, or extra stock for gravy.",batchIngredients:"Mushrooms; A01 onion base; stock; thyme; flour optional for thicker gravy",batchYield:"8 portions",sundayActiveMin:18,elapsedMin:35,cadence:"Monthly",storage:"Freeze dairy-free portions. Reheat with crème fraîche for creamy dishes or stock for gravy-style dishes."});
+  Object.assign(bmap.get("S16"),{name:"Roasted red pepper sauce",unitMeans:"150g",prep:"Blend roasted peppers with passata, garlic, smoked paprika and a little vinegar; simmer briefly and portion. This replaces the separate romesco and harissa-style bases.",batchIngredients:"Roasted peppers; passata; garlic; smoked paprika; vinegar; olive oil",batchYield:"8 portions",sundayActiveMin:10,elapsedMin:20,cadence:"Monthly",storage:"Freeze portions. Use directly with meat, fish, halloumi, pasta, gnocchi or couscous."});
+  if(Array.isArray(cat.sauces)){cat.sauces=cat.sauces.filter(s=>!Object.keys(mergeCodes).includes(s.code));const sm=new Map(cat.sauces.map(s=>[s.code,s]));Object.assign(sm.get("S03"),{name:"Master mild curry sauce/base",yield:"8 portions · planner portion 150g",ingredients:["A01 onion base","carrots","A02 ginger-garlic","mild curry powder","stock"],steps:["Cook onion/carrot and ginger-garlic with mild curry powder.","Add stock, simmer until soft and blend smooth.","Use as-is for katsu/Japanese-style curry, or add coconut milk/yoghurt for other curries."],storage:"Freeze 150g portions."});Object.assign(sm.get("S08"),{name:"Onion-mushroom umami gravy base",yield:"8 portions · planner portion 150g",ingredients:["Mushrooms","A01 onion base","stock","thyme","flour optional"],steps:["Brown onion and mushrooms deeply.","Add stock and reduce.","Blend partly or fully and portion.","Add crème fraîche for creamy sauces or extra stock for gravy."],storage:"Freeze dairy-free portions."});Object.assign(sm.get("S16"),{name:"Roasted red pepper sauce",yield:"8 portions · planner portion 150g",ingredients:["Roasted peppers","passata","garlic","smoked paprika","vinegar","olive oil"],steps:["Blend until mostly smooth.","Simmer briefly, cool and portion."],storage:"Freeze portions."});}
+})();

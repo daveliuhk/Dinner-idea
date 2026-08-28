@@ -1,0 +1,27 @@
+(function(){
+  "use strict";
+  const {d,cat,byId,patch,setIng,addBlock,delBlock}=window.DinnerV142;
+  patch("R028",{name:"Hoisin-sesame chicken drumsticks",requirement:"650g chicken drumsticks; 2 microwave rice pouches; 150g cucumber + 150g slaw; sesame",method:"Reheat/crisp P05, glaze with S05, microwave rice and serve with A05/cucumber."});setIng("R028",{I004:650,I031:2,I051:150,I052:150});
+  patch("R030",{name:"Mild curry drumsticks with cucumber rice",requirement:"650g chicken drumsticks; 2 microwave rice pouches; 125g cucumber + 125g tomato; 120g yoghurt; 1 lemon"});setIng("R030",{I004:650,I031:2,I052:125,I044:125,I056:120,I066:1});
+  patch("R031",{name:"Teriyaki-honey chicken wings & rice",requirement:"650g chicken wings; 2 microwave rice pouches; 300g broccoli; honey",method:"Reheat/crisp P05, glaze with S04 plus a little honey, microwave rice and broccoli and serve."});
+  patch("R038",{requirement:"250g beef mince; 2 microwave rice pouches; 1 tin kidney beans + 1 pepper; 120g Greek yoghurt; 1 lime"});setIng("R038",{I006:250,I031:2,I063:1,I041:150,I056:120,I067:1});
+  patch("R040",{name:"Beef & bean rice bowls",requirement:"250g beef mince; 2 microwave rice pouches; 1 tin kidney beans; 200g salad veg; 120g yoghurt; 80g cheddar; 1 lime",method:"Reheat P07 with A03, microwave rice and beans, then assemble with A05, yoghurt, cheddar and lime."});setIng("R040",{I006:250,I031:2,I063:1,I052:200,I067:1,I056:120,I058:80});
+  patch("R041",{requirement:"250g beef mince; 2 microwave rice pouches; 200g peas; 120g yoghurt",method:"Reheat P07 with S03+A02, fold in peas, microwave rice and finish with yoghurt."});
+  patch("R042",{requirement:"250g beef mince; 2 microwave rice pouches; 150g carrot + 150g cucumber; sesame"});setIng("R042",{I006:250,I031:2,I054:150,I052:150});
+  patch("R043",{requirement:"250g beef mince; 600g potatoes for mash; 150g peas + 150g carrots; 50g cheddar"});setIng("R043",{I006:250,I035:600,I047:150,I054:150,I058:50});
+  patch("R048",{name:"Creamy mushroom steak with crispy potatoes",requirement:"300g rump steak; 600g baby potatoes; 250g green beans; 120g crème fraîche",method:"Start C01, sear steak, then warm S08 with crème fraîche in the steak pan while green beans cook."});addBlock("R048","S08");
+  patch("R050",{requirement:"300g beef strips; 2 microwave rice pouches; 350g peppers/onions; 1 lime; honey"});
+  patch("R051",{requirement:"300g rump steak; 220g couscous; 150g tomato + 150g courgette; 1 lemon"});setIng("R051",{I007:300,I033:220,I044:150,I042:150,I066:1});
+  patch("R052",{requirement:"300g beef strips; 2 microwave rice pouches; 150g green beans + 150g carrots; sesame"});setIng("R052",{I007:300,I031:2,I046:150,I054:150});
+  patch("R053",{requirement:"300g beef strips; 450g noodles; 175g broccoli + 175g peppers",method:"Cook P09 and vegetables, add S05 and toss through noodles."});setIng("R053",{I007:300,I032:450,I045:175,I041:175});
+  patch("R054",{name:"Roasted-pepper steak with potatoes",method:"Start C01, sear steak while potatoes finish, spoon over S16 and serve with green beans/tomatoes."});
+  patch("R057",{name:"Mild coconut beef curry with potatoes",requirement:"400g braising beef; 2 microwave rice pouches; 300g potato + 100g onion; 300ml coconut milk",method:"Reheat P10 with S03+A02 and coconut milk; add potato/onion and serve with microwave rice."});
+  patch("R062",{name:"Coconut beef curry with green beans",method:"Reheat P10 with S03+A02+coconut milk, add green beans and serve with microwave rice and lime."});
+  patch("R063",{name:"Umami-gravy shredded beef with mash",requirement:"1 P10 pack / ~275g cooked shredded beef; 600g potatoes for mash; 250g peas",method:"Reheat P10 in S08 while C03 mash and peas heat in parallel."});
+  patch("R065",{name:"Honey-mustard pork chops with cabbage & potatoes",requirement:"350g pork chops; 600g baby potatoes; 300g cabbage/peas",method:"Start C01, cook pork chops and glaze with S09; heat cabbage/peas in parallel."});
+  patch("R067",{name:"Roasted-pepper pork medallions with couscous",method:"Cook P11 while couscous hydrates and A04 heats; spoon over S16."});
+  patch("R073",{name:"Sausage, spinach & gnocchi one-pot",requirement:"4 pork sausages; 500g gnocchi; 250g spinach/peas; 150ml crème fraîche; parmesan",method:"Reheat P14 sausage pieces while gnocchi browns; add A01 and spinach/peas, then finish with crème fraîche and parmesan."});setIng("R073",{I011:4,I029:500,I048:125,I047:125,I057:150,I061:40});
+  patch("R076",{requirement:"250g pork mince; 2 microwave rice pouches; 150g cucumber + 150g carrot; 1 lime"});
+  patch("R079",{name:"Ginger-lime pork mince noodles",requirement:"250g pork mince; 450g noodles; 350g stir-fry vegetables; 1 lime; soy",method:"Reheat P13 with A02, stir-fry vegetables, add soy/lime and toss through noodles."});
+  patch("R081",{name:"Teriyaki pork mince rice",requirement:"250g pork mince; 2 microwave rice pouches; 175g peppers + 175g sweetcorn",method:"Reheat P13+A03, glaze with S04 and serve with microwave rice."});addBlock("R081","S04");setIng("R081",{I012:250,I031:2,I041:175,I049:175});
+})();
