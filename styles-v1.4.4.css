@@ -1,0 +1,5 @@
+.recipe-filter-row{grid-template-columns:minmax(220px,1.7fr) repeat(3,minmax(150px,1fr)) auto;align-items:center}
+.recipe-filter-row .button{white-space:nowrap}
+.recipe-tag-row{flex-wrap:wrap}
+@media(max-width:1050px){.recipe-filter-row{grid-template-columns:repeat(2,minmax(0,1fr))}.recipe-filter-row #recipeSearch{grid-column:1/-1}.recipe-filter-row #clearRecipeFilters{justify-self:start}}
+@media(max-width:650px){.recipe-filter-row{grid-template-columns:1fr}.recipe-filter-row #recipeSearch{grid-column:auto}}
